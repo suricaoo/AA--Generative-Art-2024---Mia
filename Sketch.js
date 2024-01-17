@@ -1,7 +1,12 @@
 let lanterns = [];
+let particles = [];
 
 function setup() {
   createCanvas(800, 600);
+ 
+  for (let i = 0; i < 200; i++) {
+        particles.push(new Particle());
+      }
 }
 
 function draw() {
@@ -12,6 +17,11 @@ function draw() {
     lantern.display();
     lantern.move();
   }
+  
+  for (let particle of particles) {
+        particle.update();
+        particle.display();
+      }
 }
 
 function mousePressed() {
@@ -28,7 +38,7 @@ class Lantern {
     this.sizeY = 60; // Adjust the vertical size of the lantern (making it more oval)
     this.knotWidth = 10; // Adjust the width of the knot rectangle
     this.knotHeight = 6; // Adjust the height of the knot rectangle
-    this.color = color(random(255), random(255), random(255)); // Random color
+    this.color = color(random(200, 255), random(100, 200), random(150, 255), 150); // Random color
     this.speed = random(1, 2); // Random speed
   }
 
@@ -59,3 +69,29 @@ class Lantern {
   }
 }
 
+class Particle {
+      constructor() {
+        this.position = createVector(random(width), random(height));
+        this.velocity = createVector(random(-1, 1), random(-1, 1));
+        this.color = color(random(200, 255), random(100, 200), random(150, 255), 150);
+        this.size = random(5, 15);
+      }
+
+      update() {
+        this.position.add(this.velocity);
+
+        if (this.position.x > width || this.position.x < 0) {
+          this.velocity.x *= -1;
+        }
+
+        if (this.position.y > height || this.position.y < 0) {
+          this.velocity.y *= -1;
+        }
+      }
+
+      display() {
+        noStroke();
+        fill(this.color);
+        ellipse(this.position.x, this.position.y, this.size, this.size);
+      }
+    }
