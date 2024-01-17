@@ -26,8 +26,8 @@ class Lantern {
     this.y = y;
     this.sizeX = 50; // Adjust the horizontal size of the lantern
     this.sizeY = 60; // Adjust the vertical size of the lantern (making it more oval)
-    this.knotWidth = 7; // Adjust the width of the knot rectangle
-    this.knotHeight = 8; // Adjust the height of the knot rectangle
+    this.knotWidth = 10; // Adjust the width of the knot rectangle
+    this.knotHeight = 6; // Adjust the height of the knot rectangle
     this.color = color(random(255), random(255), random(255)); // Random color
     this.speed = random(1, 2); // Random speed
   }
