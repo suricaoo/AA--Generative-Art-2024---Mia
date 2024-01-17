@@ -29,7 +29,7 @@ class Lantern {
     this.knotWidth = 7; // Adjust the width of the knot rectangle
     this.knotHeight = 8; // Adjust the height of the knot rectangle
     this.color = color(random(255), random(255), random(255)); // Random color
-    this.speed = random(1, 3); // Random speed
+    this.speed = random(1, 2); // Random speed
   }
 
   move() {
